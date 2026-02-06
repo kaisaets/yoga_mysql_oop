@@ -11,6 +11,9 @@ const articleController = require('./controllers/article.js')
 const articleRoutes = require('./routes/article')
 app.use('/', articleRoutes)
 
+const authorRoutes = require('./routes/author')
+app.use('/author', authorRoutes)
+
 app.listen(3025, () => {
     console.log('Example app listening on port 3025')
 })
