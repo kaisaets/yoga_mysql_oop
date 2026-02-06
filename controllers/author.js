@@ -9,14 +9,13 @@ class authorController {
 
   async getAuthorArticles(req, res) {
     try {
-      const id = req.params.id;
-      const author = await AuthorModel.findOne(id);
+      const author = await AuthorModel.findById(req.params.id);
 
       if (!author) {
         return res.status(404).json({ message: "Can't find author" });
       }
 
-      const articles = await ArticleModel.findMany("author_id", id);
+      const articles = await ArticleModel.findMany(author);
 
       res.status(200).json({
         author: author,
