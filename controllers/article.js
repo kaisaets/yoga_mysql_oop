@@ -57,5 +57,22 @@ class articleController {
       });
     }
   }
+
+  async deleteArticle(req, res) {
+    try {
+      const articleId = req.params.id;
+      const affectedRows = await ArticleModel.delete(articleId);
+
+      if (affectedRows > 0) {
+        res
+          .status(200)
+          .json({ message: `Article with ID ${articleId} has been deleted` });
+      } else {
+        res.status(404).json({ message: "Article not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Error deleting: " + error.message });
+    }
+  }
 }
 module.exports = new articleController();
