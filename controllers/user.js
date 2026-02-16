@@ -3,8 +3,7 @@ const UserModel = require("../models/user");
 const session = require("express-session");
 
 class UserController {
-  constructor() {
-    this.model = new UserModel();
+  constructor() {    this.model = new UserModel();
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -44,6 +43,7 @@ class UserController {
         req.session.user = {
           user_id: userData.id,
           username: userData.username,
+          role: userData.role
         };
         res.status(201).json({
           message: "New user registered",
@@ -77,6 +77,7 @@ class UserController {
       req.session.user = {
         user_id: user.id,
         username: user.username,
+        role: user.role
       };
       res.status(201).json({
         message: "Login successful",
