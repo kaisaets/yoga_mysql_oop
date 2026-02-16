@@ -6,33 +6,27 @@ class ArticleModel extends BaseSQLModel {
   }
 
   async findAll() {
-    const articles = await super.findAll();
-    return articles;
+    return super.findAll();
   }
 
   async findOne(slug) {
-    const article = await super.findOne("slug", slug);
-    return article;
+    return super.findOne("slug", slug);
   }
 
   async findMany(author) {
-    const articles = await super.findMany("author_id", author.id);
-    return articles;
+    return super.findMany("author_id", author.id);
   }
 
   async create(article) {
-    const createdArticleId = await super.create(article);
-    return createdArticleId;
+    return super.create(article);
   }
 
   async update(id, article) {
-    const result = await super.update(id, article);
-    return result;
+    return super.update(id, article);
   }
 
   async delete(id) {
-    const deletedArticle = await super.delete(id);
-    return deletedArticle;
+    return super.delete(id);
   }
 }
 

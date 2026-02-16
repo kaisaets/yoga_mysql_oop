@@ -1,17 +1,17 @@
-const mysql = require('mysql2')
-const dotenv = require('dotenv')
-dotenv.config()
+const mysql = require("mysql2");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'qwerty',
-    database: 'yoga_mysql'
-})
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
+});
 
-connection.connect ((err) => {
-    if(err) throw err
-    console.log('MySQL server is connected')
-})
+connection.connect((err) => {
+  if (err) throw err;
+  console.log("MySQL server is connected");
+});
 
-module.exports = connection
+module.exports = connection;
